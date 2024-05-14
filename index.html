@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестовое задание в компанию </title>
+    <style>
+        .triangle-container {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+        }
+
+        .triangle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            cursor: pointer;
+        }
+
+        .triangle-up {
+            border-bottom: 5px solid black;
+        }
+
+        .triangle-down {
+            border-top: 5px solid black;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #cityRow {
+            text-align: center;
+        }
+
+        #detailsRow {
+            text-align: center;
+        }
+
+        #timesRow {
+            text-align: center;
+        }
+
+        #additionalTable {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .additionalTableElement {
+            border: 1px dashed black;
+        }
+
+    </style>
+</head>
+<body>
+
+<table border="1">
+    <tr id="detailsRow" class="hidden">
+        <td colspan="2">Осмотр</td>
+        <td colspan="2">ТО</td>
+        <td colspan="2">СТО</td>
+        <td colspan="2">Перегруз</td>
+        <td colspan="2">Перегрев</td>
+    </tr>
+    <tr id="cityRow">
+        <td colspan="10">
+            <div class="triangle-container" id="triangleUpContainer">
+                <span class="triangle triangle-up" id="triangleUp"></span>
+            </div>
+            Город
+            <div class="triangle-container" id="triangleDownContainer">
+                <span class="triangle triangle-down" id="triangleDown"></span>
+            </div>
+        </td>
+    </tr>
+    <tr id="timesRow" class="hidden">
+        <td colspan="3">Время заезда</td>
+        <td colspan="5">
+            <div class="triangle-container" id="triangleDownDownContainer">
+                <span class="triangle triangle-down" id="triangleDownDown"></span>
+            </div>
+        </td>
+        <td colspan="3">Время выезда</td>
+    </tr>
+</table>
+
+<table id="additionalTable" class="hidden">
+    <tr class="additionalTableElement">
+        <td colspan="10" class="additionalTableElement">Фактическое время прибытия</td>
+    </tr>
+    <tr class="additionalTableElement">
+        <td colspan="10" class="additionalTableElement">Город</td>
+    </tr>
+    <tr class="additionalTableElement">
+        <td class="additionalTableElement">Время заезда</td>
+        <td class="additionalTableElement">Время выезда</td>
+        <td class="additionalTableElement" colspan="5" style="width: 50px"></td>
+        <td class="additionalTableElement">Время заезда</td>
+        <td class="additionalTableElement">Время выезда</td>
+    </tr>
+</table>
+
+<script>
+    const triangleUp = document.getElementById('triangleUp');
+    const triangleDown = document.getElementById('triangleDown');
+    const triangleDownDown = document.getElementById('triangleDownDown');
+    const detailsRow = document.getElementById('detailsRow');
+    const timesRow = document.getElementById('timesRow');
+    const additionalTable = document.getElementById('additionalTable');
+
+    triangleUp.addEventListener('click', () => {
+        detailsRow.classList.toggle('hidden');
+    });
+
+    triangleDown.addEventListener('click', () => {
+        timesRow.classList.toggle('hidden');
+    });
+
+    triangleDownDown.addEventListener('click', () => {
+        additionalTable.classList.toggle('hidden');
+    });
+</script>
+
+</body>
+</html>
